@@ -22,7 +22,10 @@
         <div class="whitespace-pre-line text-sm text-secondary-2">{{ noticeText }}</div>
       </div>
     </div>
-    <TicketStatusBar />
+    <TicketStatusBar
+      :issue-status="pageData.ticketInfo.data.issue_status"
+      :used-status="pageData.ticketInfo.data.used_status"
+    />
   </div>
 </template>
 

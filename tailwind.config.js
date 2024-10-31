@@ -24,6 +24,7 @@ export default {
         'primary-3': 'var(--main-bg-color)',
         'secondary-1': '#6c757d',
         'secondary-2': '#797979',
+        'secondary-3': '#898d92',
         mask: 'rgba(0,0,0,0.6)'
       }
     }
