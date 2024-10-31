@@ -1,7 +1,5 @@
 <template>
-  <div>
-    csdcsdcsd
-  </div>
+  <div></div>
 </template>
 
 <script setup>

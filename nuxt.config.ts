@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devServer: {
+    port: 3300
+  },
   app: {
     head: {
       htmlAttrs: { lang: 'zh-tw' },

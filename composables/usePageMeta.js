@@ -8,6 +8,13 @@ export const usePageMeta = () => {
     ]
   })
 
+  const ticketMeta = ref({
+    title: '票券頁面',
+    meta: [
+      { name: 'description', content: '' }
+    ]
+  })
+
   const notFoundMeta = ref({
     title: '404'
   })
@@ -16,5 +23,5 @@ export const usePageMeta = () => {
     title: '500 error'
   })
 
-  return { homeMeta, notFoundMeta, errorMeta }
+  return { homeMeta, ticketMeta, notFoundMeta, errorMeta }
 }

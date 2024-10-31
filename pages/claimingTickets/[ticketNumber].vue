@@ -28,11 +28,13 @@
 
 <script setup>
 import { useRedeemResult } from '@/composables/useRedeemResult.js'
+import { usePageMeta } from '@/composables/usePageMeta.js'
 import ticketApi from '@/api/ticketApi.js'
 import TicketStatusBar from '@/components/TicketStatusBar/index.vue'
 
 const route = useRoute()
 const { redeemResult } = useRedeemResult()
+const { ticketMeta } = usePageMeta()
 
 const { data: pageData } = useAsyncData('ticketInfo', async () => {
   const ticketInfo = await ticketApi.getTicketInfo({
@@ -70,5 +72,7 @@ const noticeText = computed(() => {
 onMounted(() => {
   console.log(pageData)
 })
+
+useHead(ticketMeta)
 
 </script>
