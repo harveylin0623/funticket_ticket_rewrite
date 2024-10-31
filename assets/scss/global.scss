@@ -1,0 +1,45 @@
+.cms-editor-block {
+  width: 100%;
+  * {
+    word-break: break-all !important;
+    white-space: normal !important;
+  }
+  p {
+    text-indent: 0px !important;
+  }
+  h1 {
+    font-size: 150%;
+  }
+  ol, ul {
+    padding: revert;
+  }
+  ol, ul, li {
+    list-style: revert;
+  }
+  a {
+    color: revert;
+    text-decoration: revert;
+  }
+  table {
+    max-width: 100% !important;
+  }
+  figure.table {
+    float: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    td {
+      word-break: break-all;
+    }
+  }
+  table, th, td {
+    border-collapse: collapse;
+    border-color: #000;
+    border-width: 1px;
+    border-style: solid;
+  }
+  img, iframe {
+		display: inline-block;
+		max-width: 100%;
+		height: auto;
+	}
+}

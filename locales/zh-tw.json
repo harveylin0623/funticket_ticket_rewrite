@@ -1,0 +1,21 @@
+{
+  "seo": {
+    "pageTitle": {
+      "template": "專案",
+      "home": "首頁"
+    },
+    "metaContent": {
+      
+    }
+  },
+  "validate": {
+    "require": "必填",
+    "email": "電子信箱格式有誤",
+    "confirm": "確認資料有誤",
+    "taxId": "統一編號格式有誤",
+    "webUrl": "網站連結格式有誤",
+    "password": "6 - 12 碼英數字",
+    "phone": "手機格式有誤",
+    "pureNumber": "輸入數字"
+  }
+}

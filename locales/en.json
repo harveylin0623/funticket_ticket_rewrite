@@ -1,0 +1,21 @@
+{
+  "seo": {
+    "pageTitle": {
+      "template": "project",
+      "home": "home"
+    },
+    "metaContent": {
+      
+    }
+  },
+  "validate": {
+    "require": "",
+    "email": "",
+    "confirm": "",
+    "taxId": "",
+    "webUrl": "",
+    "password": "",
+    "phone": "",
+    "pureNumber": ""
+  }
+}

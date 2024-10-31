@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    @apply text-black;
+  }
+
+  h1 {
+    @apply text-2xl mb-8 font-bold sm:mb-10 sm:text-[32px];
+  }
+
+  h2 {
+    @apply text-[28px] font-medium;
+  }
+
+  h3 {
+    @apply text-2xl font-medium;
+  }
+
+  h4 {
+    @apply text-lg font-medium;
+  }
+
+  span, a {
+    @apply inline-block;
+  }
+
+}
+
+@layer components {
+  .btn {
+    @apply flex justify-between items-center px-6 h-12 text-base rounded border border-solid cursor-pointer [&.sm]:h-12 sm:h-14 sm:[&.sm]:h-12;
+  }
+  
+  .btn-primary-1 {
+    @apply bg-primary-1 border-primary-1;
+  }
+
+  .btn-outline-gray-2 {
+    @apply bg-white border-primary-1 hover:text-white hover:bg-gray-2 transition-colors;
+  }
+}
