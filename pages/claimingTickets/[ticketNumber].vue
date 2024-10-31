@@ -65,9 +65,7 @@ const usePeriod = computed(() => ticketIsExist.value ? pageData.value.ticketInfo
 
 const activityDesc = computed(() => ticketIsExist.value ? pageData.value.ticketInfo.data.description : '')
 
-const noticeText = computed(() => {
-  return ticketIsExist.value ? pageData.value.ticketInfo.data.note : ''
-})
+const noticeText = computed(() => ticketIsExist.value ? pageData.value.ticketInfo.data.note : '')
 
 onMounted(() => {
   console.log(pageData)
