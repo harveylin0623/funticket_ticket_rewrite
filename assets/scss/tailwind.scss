@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --default-bg-color: #fff;
+  --main-bg-color: #d1cbec;
+}
+
 @layer base {
   body {
     font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
@@ -32,11 +37,11 @@
 
 @layer components {
   .btn {
-    @apply flex justify-between items-center px-6 h-12 text-base rounded border border-solid cursor-pointer [&.sm]:h-12 sm:h-14 sm:[&.sm]:h-12;
+    @apply flex justify-center items-center h-[38px] py-1.5 px-3 text-base rounded border border-solid cursor-pointer text-white text-center;
   }
   
   .btn-primary-1 {
-    @apply bg-primary-1 border-primary-1;
+    @apply bg-primary-1 border-primary-1 transition-shadow active:shadow-[0_0_0_0.25rem_rgba(146,137,191,0.5)];
   }
 
   .btn-outline-gray-2 {

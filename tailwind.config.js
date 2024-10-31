@@ -19,7 +19,11 @@ export default {
 
       },
       colors: {
-        'primary-1': '#FF8637',
+        'primary-1': '#7f74b4',
+        'primary-2': '#5a566f',
+        'primary-3': 'var(--main-bg-color)',
+        'secondary-1': '#6c757d',
+        'secondary-2': '#797979',
         mask: 'rgba(0,0,0,0.6)'
       }
     }

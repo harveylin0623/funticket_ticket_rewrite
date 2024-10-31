@@ -1,5 +1,6 @@
 <template>
   <div>
+    csdcsdcsd
   </div>
 </template>
 
@@ -8,6 +9,9 @@ import { usePageMeta } from '@/composables/usePageMeta.js'
 
 const { homeMeta } = usePageMeta()
 
-useHead(homeMeta)
+definePageMeta({
+  layout: false
+})
 
+useHead(homeMeta)
 </script>
