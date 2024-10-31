@@ -8,5 +8,13 @@ export const usePageMeta = () => {
     ]
   })
 
-  return { homeMeta }
+  const notFoundMeta = ref({
+    title: '404'
+  })
+
+  const errorMeta = ref({
+    title: '500 error'
+  })
+
+  return { homeMeta, notFoundMeta, errorMeta }
 }
