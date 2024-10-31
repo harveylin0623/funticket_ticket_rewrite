@@ -3,7 +3,7 @@
     <CustomContainer v-if="showAllButton">
       <div
         v-if="showMainButton"
-        class="flex items-center justify-between bg-white p-3"
+        class="flex items-center justify-between bg-white px-6 pb-3"
       >
         <BaseButton
           class="w-[49.5%]"
@@ -11,11 +11,16 @@
         >
           查看適用品牌
         </BaseButton>
-        <BaseButton class="w-[49.5%]">{{ rightButtonText }}</BaseButton>
+        <BaseButton
+          class="w-[49.5%]"
+          @click="doAction"
+        >
+          {{ rightButtonText }}
+        </BaseButton>
       </div>
       <div
         v-if="isExpired"
-        class="bg-white p-3"
+        class="bg-white px-6 pb-3"
       >
         <BaseButton
           button-type="secondary-3"
@@ -56,6 +61,16 @@ const showMainButton = computed(() => props.issueStatus === 1 || props.issueStat
 const showAllButton = computed(() => props.issueStatus !== 3)
 
 const isExpired = computed(() => props.issueStatus === 4)
+
+const doAction = () => {
+  if (props.issueStatus === 1) {
+
+  } else if (props.issueStatus === 2) {
+    if (props.usedStatus === 3) {
+      return
+    }
+  }
+}
 
 const goToBrandPage = () => {
   router.push('')

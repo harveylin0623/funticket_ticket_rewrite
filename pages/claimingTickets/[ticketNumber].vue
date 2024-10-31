@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="h-auto md:h-[576px]">
+    <div>
       <img
         :src="ticketImage"
+        class="h-auto w-full object-cover"
         alt=""
-        class="h-auto w-full object-cover md:h-full"
       />
     </div>
     <div class="bg-white px-6 pb-[70px] pt-6">
