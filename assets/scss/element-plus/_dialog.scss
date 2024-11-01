@@ -1,8 +1,10 @@
 .basic-structure {
   &.el-dialog {
-    --el-dialog-width: 476px;
-    --el-dialog-border-radius: 4px;
-    --el-dialog-padding-primary: 12px;
+    --el-dialog-width: 300px;
+    --el-dialog-border-radius: 14px;
+    --el-dialog-padding-primary: 0px;
+    padding-top: 20px;
+    background-color: #dddede;
   }
 }
 
@@ -10,15 +12,13 @@
   &.el-dialog {
     .el-dialog__header {
       padding-bottom: 0px;
-      margin-bottom: 20px;
     }
     .el-dialog__body {
       color: #000;
+      padding: 20px;
     }
     .el-dialog__footer {
       padding-top: 0px;
-      margin-top: 20px;
-      text-align: left;
     }
   }
 }

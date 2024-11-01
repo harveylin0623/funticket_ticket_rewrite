@@ -8,9 +8,7 @@
       class="basic-structure"
     >
       <template v-slot:header>
-        <div class="text-center">
-          <h1>{{ dialogTitle }}</h1>
-        </div>
+        <div class="text-center text-lg">{{ dialogTitle }}</div>
       </template>
       <slot name="default"></slot>
       <template

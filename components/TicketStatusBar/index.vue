@@ -64,7 +64,7 @@ const isExpired = computed(() => props.issueStatus === 4)
 
 const doAction = () => {
   if (props.issueStatus === 1) {
-
+    console.log('test')
   } else if (props.issueStatus === 2) {
     if (props.usedStatus === 3) {
       return

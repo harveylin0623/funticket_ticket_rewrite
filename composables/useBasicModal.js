@@ -1,12 +1,13 @@
 export const useBasicModal = (props, emit) => {
-  const { t } = useI18n()
   const isOpen = ref(false)
 
-  const verifyText = computed(() => props.confirmText === '' ? t('confirm') : props.confirmText)
+  const baseButtonClass = ref('flex h-[40px] shrink-0 grow-0 cursor-pointer items-center justify-center px-1.5 text-modal-button')
 
-  const denyText = computed(() => props.cancelText === '' ? t('cancel') : props.cancelText)
+  const verifyText = computed(() => props.confirmText === '' ? '確認' : props.confirmText)
 
-  const buttonAlign = computed(() => props.showCancel ? 'justify-between' : 'justify-center')
+  const denyText = computed(() => props.cancelText === '' ? '取消' : props.cancelText)
+
+  const buttonWidth = computed(() => props.showCancel ? 'w-1/2' : 'w-full')
 
   const toggleModal = (value) => {
     isOpen.value = value
@@ -22,5 +23,5 @@ export const useBasicModal = (props, emit) => {
     emit('confirm', payload)
   }
 
-  return { isOpen, verifyText, denyText, buttonAlign, toggleModal, cancelHandler, confirmHandler }
+  return { isOpen, verifyText, denyText, baseButtonClass, buttonWidth, toggleModal, cancelHandler, confirmHandler }
 }

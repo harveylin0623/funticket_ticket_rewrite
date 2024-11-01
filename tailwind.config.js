@@ -25,6 +25,8 @@ export default {
         'secondary-1': '#6c757d',
         'secondary-2': '#797979',
         'secondary-3': '#898d92',
+        'secondary-4': '#b5b5b5',
+        'modal-button': '#007aff',
         mask: 'rgba(0,0,0,0.6)'
       }
     }

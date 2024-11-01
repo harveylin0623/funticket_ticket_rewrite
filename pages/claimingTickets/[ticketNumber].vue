@@ -26,6 +26,12 @@
       :issue-status="pageData.ticketInfo.data.issue_status"
       :used-status="pageData.ticketInfo.data.used_status"
     />
+    <BasicModal
+      ref="inputModal"
+      dialog-title="請輸入票券密碼"
+      dialog-content=""
+      :show-cancel="false"
+    />
   </div>
 </template>
 
@@ -34,10 +40,12 @@ import { useRedeemResult } from '@/composables/useRedeemResult.js'
 import { usePageMeta } from '@/composables/usePageMeta.js'
 import ticketApi from '@/api/ticketApi.js'
 import TicketStatusBar from '@/components/TicketStatusBar/index.vue'
+import BasicModal from '@/components/Modal/BasicModal.vue'
 
 const route = useRoute()
 const { redeemResult } = useRedeemResult()
 const { ticketMeta } = usePageMeta()
+const inputModal = ref(null)
 
 const { data: pageData } = useAsyncData('ticketInfo', async () => {
   const ticketInfo = await ticketApi.getTicketInfo({
@@ -72,6 +80,7 @@ const noticeText = computed(() => ticketIsExist.value ? pageData.value.ticketInf
 
 onMounted(() => {
   console.log(pageData)
+  inputModal.value.toggleModal(true)
 })
 
 useHead(ticketMeta)
