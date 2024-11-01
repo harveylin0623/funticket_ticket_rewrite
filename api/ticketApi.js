@@ -7,6 +7,13 @@ const ticketApi = {
       method: 'post',
       ...payload
     })
+  },
+  redeemTicket (payload) {
+    return baseAxios({
+      url: '/portal/ticket/validate',
+      method: 'post',
+      ...payload
+    })
   }
 }
 

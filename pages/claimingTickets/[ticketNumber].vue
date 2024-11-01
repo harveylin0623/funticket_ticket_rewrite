@@ -25,12 +25,20 @@
     <TicketStatusBar
       :issue-status="pageData.ticketInfo.data.issue_status"
       :used-status="pageData.ticketInfo.data.used_status"
+      :toggle-input-modal="toggleInputModal"
     />
     <BasicModal
+      ref="basicModal"
+      dialog-title="提示"
+      :dialog-content="redeemErrorMessage"
+    />
+    <InputModal
       ref="inputModal"
       dialog-title="請輸入票券密碼"
-      dialog-content=""
-      :show-cancel="false"
+      :dialog-content="usePeriod"
+      :show-cancel="true"
+      :is-redeeming="isRedeeming"
+      @redeem="redeemHandler"
     />
   </div>
 </template>
@@ -41,11 +49,16 @@ import { usePageMeta } from '@/composables/usePageMeta.js'
 import ticketApi from '@/api/ticketApi.js'
 import TicketStatusBar from '@/components/TicketStatusBar/index.vue'
 import BasicModal from '@/components/Modal/BasicModal.vue'
+import InputModal from '@/components/Modal/InputModal.vue'
 
 const route = useRoute()
+const router = useRouter()
 const { redeemResult } = useRedeemResult()
 const { ticketMeta } = usePageMeta()
+const basicModal = ref(null)
 const inputModal = ref(null)
+const isRedeeming = ref(false)
+const redeemErrorMessage = ref('')
 
 const { data: pageData } = useAsyncData('ticketInfo', async () => {
   const ticketInfo = await ticketApi.getTicketInfo({
@@ -78,9 +91,31 @@ const activityDesc = computed(() => ticketIsExist.value ? pageData.value.ticketI
 
 const noticeText = computed(() => ticketIsExist.value ? pageData.value.ticketInfo.data.note : '')
 
+const toggleInputModal = (val) => {
+  inputModal.value.toggleModal(val)
+}
+
+const redeemHandler = async (ticketSecret) => {
+  isRedeeming.value = true
+  const { data, message } = await ticketApi.redeemTicket({
+    data: {
+      number: pageData.value.ticketInfo.data.number,
+      code: ticketSecret
+    }
+  })
+  if (data === null) {
+    redeemErrorMessage.value = message
+    toggleInputModal(false)
+    basicModal.value.toggleModal(true)
+    isRedeeming.value = false
+    return
+  }
+  router.push('/')
+  isRedeeming.value = false
+}
+
 onMounted(() => {
   console.log(pageData)
-  inputModal.value.toggleModal(true)
 })
 
 useHead(ticketMeta)

@@ -42,6 +42,10 @@ const props = defineProps({
   usedStatus: {
     type: Number,
     required: true
+  },
+  toggleInputModal: {
+    type: Function,
+    required: true
   }
 })
 
@@ -64,7 +68,7 @@ const isExpired = computed(() => props.issueStatus === 4)
 
 const doAction = () => {
   if (props.issueStatus === 1) {
-    console.log('test')
+    props.toggleInputModal(true)
   } else if (props.issueStatus === 2) {
     if (props.usedStatus === 3) {
       return

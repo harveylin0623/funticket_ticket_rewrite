@@ -48,7 +48,7 @@
     @apply bg-secondary-3 border-secondary-3;
   }
 
-  .btn-outline-gray-2 {
-    @apply bg-white border-primary-1 hover:text-white hover:bg-gray-2 transition-colors;
+  .form-control {
+    @apply block w-full border border-secondary-4 px-3 py-1 focus:outline-none placeholder:text-secondary-4;
   }
 }

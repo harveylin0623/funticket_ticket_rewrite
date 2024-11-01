@@ -6,6 +6,7 @@
       :show-close="false"
       :close-on-click-modal="false"
       class="basic-structure"
+      @opened="openedHandler"
     >
       <template v-slot:header>
         <div class="text-center text-lg">{{ dialogTitle }}</div>
@@ -34,7 +35,7 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['update:isOpen'])
+const emit = defineEmits(['update:isOpen', 'opened'])
 
 const dialogVisible = computed({
   get () {
@@ -44,6 +45,10 @@ const dialogVisible = computed({
     emit('update:isOpen', val)
   }
 })
+
+const openedHandler = () => {
+  emit('opened')
+}
 
 defineOptions({
   name: 'BasicStructure'
