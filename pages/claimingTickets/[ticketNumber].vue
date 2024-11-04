@@ -27,6 +27,8 @@
       :used-status="pageData.ticketInfo.data.used_status"
       :toggle-input-modal="toggleInputModal"
       :show-use-expire="showUseExpire"
+      :ga-emit-qrocde-event="gaEmitQrocdeEvent"
+      :ga-emit-brand-event="gaEmitBrandEvent"
     />
     <BasicModal
       ref="basicModal"
@@ -45,8 +47,9 @@
 </template>
 
 <script setup>
-import { useRedeemResult } from '@/composables/useRedeemResult.js'
 import { usePageMeta } from '@/composables/usePageMeta.js'
+import { useRedeemResult } from '@/composables/useRedeemResult.js'
+import { useGaEvent } from '@/composables/useGaEvent.js'
 import ticketApi from '@/api/ticketApi.js'
 import TicketStatusBar from '@/components/TicketStatusBar/index.vue'
 import BasicModal from '@/components/Modal/BasicModal.vue'
@@ -54,8 +57,9 @@ import InputModal from '@/components/Modal/InputModal.vue'
 
 const route = useRoute()
 const router = useRouter()
-const { redeemResult } = useRedeemResult()
 const { ticketMeta } = usePageMeta()
+const { redeemResult } = useRedeemResult()
+const { ticket_status, page_location, page_title, emitGaEvent } = useGaEvent()
 const basicModal = ref(null)
 const inputModal = ref(null)
 const isRedeeming = ref(false)
@@ -92,8 +96,18 @@ const activityDesc = computed(() => ticketIsExist.value ? pageData.value.ticketI
 
 const noticeText = computed(() => ticketIsExist.value ? pageData.value.ticketInfo.data.note : '')
 
-const toggleInputModal = (val) => {
-  inputModal.value.toggleModal(val)
+const toggleInputModal = (isShow, needGaEvent = false) => {
+  inputModal.value.toggleModal(isShow)
+  if (needGaEvent) {
+    emitGaEvent({
+      eventName: 'button_click',
+      pageParams: {
+        button_name: '領取票券'
+      },
+      ticketInfo: pageData.value.ticketInfo.data,
+      deleteList: [ticket_status, page_location, page_title]
+    })
+  }
 }
 
 const showUseExpire = () => {
@@ -101,9 +115,32 @@ const showUseExpire = () => {
   basicModal.value.toggleModal(true)
 }
 
+const gaEmitQrocdeEvent = () => {
+  emitGaEvent({
+    eventName: 'button_click',
+    pageParams: {
+      button_name: '開啟票券條碼'
+    },
+    ticketInfo: pageData.value.ticketInfo.data,
+    deleteList: [ticket_status, page_location, page_title]
+  })
+}
+
+const gaEmitBrandEvent = () => {
+  emitGaEvent({
+    eventName: 'button_click',
+    pageParams: {
+      destination: '適用品牌列表頁面',
+      button_name: '查看適用品牌'
+    },
+    ticketInfo: pageData.value.ticketInfo.data,
+    deleteList: [page_location, page_title]
+  })
+}
+
 const redeemHandler = async (ticketSecret) => {
   isRedeeming.value = true
-  const { data, message } = await ticketApi.redeemTicket({
+  const { data, message, status_code } = await ticketApi.redeemTicket({
     data: {
       number: pageData.value.ticketInfo.data.number,
       code: ticketSecret
@@ -114,14 +151,39 @@ const redeemHandler = async (ticketSecret) => {
     toggleInputModal(false)
     basicModal.value.toggleModal(true)
     isRedeeming.value = false
+    if (status_code === redeemResult.value.passwordError.statusCode) {
+      emitGaEvent({
+        eventName: 'password_input',
+        pageParams: {
+          input_result: 'incorrect'
+        },
+        ticketInfo: pageData.value.ticketInfo.data,
+        deleteList: [ticket_status, page_location, page_title]
+      })
+    }
     return
   }
+  emitGaEvent({
+    eventName: 'password_input',
+    pageParams: {
+      input_result: 'correct'
+    },
+    ticketInfo,
+    deleteList: [ticket_status, page_location, page_title]
+  })
   router.push('/')
   isRedeeming.value = false
 }
 
 onMounted(() => {
   console.log(pageData)
+  emitGaEvent({
+    eventName: 'page_view',
+    pageParams: {},
+    ticketInfo: pageData.value.ticketInfo.data,
+    deleteList: [],
+    pageTitle: '票券頁面'
+  })
 })
 
 useHead(ticketMeta)

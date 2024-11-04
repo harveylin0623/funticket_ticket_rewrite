@@ -50,6 +50,14 @@ const props = defineProps({
   showUseExpire: {
     type: Function,
     required: true
+  },
+  gaEmitQrocdeEvent: {
+    type: Function,
+    required: true
+  },
+  gaEmitBrandEvent: {
+    type: Function,
+    required: true
   }
 })
 
@@ -72,18 +80,21 @@ const isExpired = computed(() => props.issueStatus === 4)
 
 const doAction = () => {
   if (props.issueStatus === 1) {
-    props.toggleInputModal(true)
+    props.toggleInputModal(true, true)
   } else if (props.issueStatus === 2) {
     if (props.usedStatus === 3) {
       props.showUseExpire()
+      props.gaEmitQrocdeEvent()
       return
     }
+    props.gaEmitQrocdeEvent()
     router.push('開啟票券條碼')
   }
 }
 
 const goToBrandPage = () => {
-  router.push('')
+  props.gaEmitBrandEvent()
+  // router.push('')
 }
 
 defineOptions({

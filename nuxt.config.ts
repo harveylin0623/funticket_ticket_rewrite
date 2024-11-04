@@ -73,8 +73,8 @@ export default defineNuxtConfig({
     disallow: [process.env.CURRENT_MODE === 'dev' ? '/' : '']
   },
   gtag: {
-    id: '',
-    enabled: false
+    id: process.env.GA_TRACKING_ID,
+    enabled: true
   },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false }
