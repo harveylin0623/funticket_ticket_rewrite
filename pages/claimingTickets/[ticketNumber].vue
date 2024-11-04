@@ -26,11 +26,12 @@
       :issue-status="pageData.ticketInfo.data.issue_status"
       :used-status="pageData.ticketInfo.data.used_status"
       :toggle-input-modal="toggleInputModal"
+      :show-use-expire="showUseExpire"
     />
     <BasicModal
       ref="basicModal"
       dialog-title="提示"
-      :dialog-content="redeemErrorMessage"
+      :dialog-content="basicModalContent"
     />
     <InputModal
       ref="inputModal"
@@ -58,7 +59,7 @@ const { ticketMeta } = usePageMeta()
 const basicModal = ref(null)
 const inputModal = ref(null)
 const isRedeeming = ref(false)
-const redeemErrorMessage = ref('')
+const basicModalContent = ref('')
 
 const { data: pageData } = useAsyncData('ticketInfo', async () => {
   const ticketInfo = await ticketApi.getTicketInfo({
@@ -95,6 +96,11 @@ const toggleInputModal = (val) => {
   inputModal.value.toggleModal(val)
 }
 
+const showUseExpire = () => {
+  basicModalContent.value = `此票券已於${usePeriod.value}過期`
+  basicModal.value.toggleModal(true)
+}
+
 const redeemHandler = async (ticketSecret) => {
   isRedeeming.value = true
   const { data, message } = await ticketApi.redeemTicket({
@@ -104,7 +110,7 @@ const redeemHandler = async (ticketSecret) => {
     }
   })
   if (data === null) {
-    redeemErrorMessage.value = message
+    basicModalContent.value = message
     toggleInputModal(false)
     basicModal.value.toggleModal(true)
     isRedeeming.value = false

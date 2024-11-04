@@ -46,6 +46,10 @@ const props = defineProps({
   toggleInputModal: {
     type: Function,
     required: true
+  },
+  showUseExpire: {
+    type: Function,
+    required: true
   }
 })
 
@@ -71,8 +75,10 @@ const doAction = () => {
     props.toggleInputModal(true)
   } else if (props.issueStatus === 2) {
     if (props.usedStatus === 3) {
+      props.showUseExpire()
       return
     }
+    router.push('開啟票券條碼')
   }
 }
 
