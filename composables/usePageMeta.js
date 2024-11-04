@@ -15,6 +15,13 @@ export const usePageMeta = () => {
     ]
   })
 
+  const qrcodeMeta = ref({
+    title: '條碼頁面',
+    meta: [
+      { name: 'description', content: '' }
+    ]
+  })
+
   const notFoundMeta = ref({
     title: '404'
   })
@@ -23,5 +30,5 @@ export const usePageMeta = () => {
     title: '500 error'
   })
 
-  return { homeMeta, ticketMeta, notFoundMeta, errorMeta }
+  return { homeMeta, ticketMeta, qrcodeMeta, notFoundMeta, errorMeta }
 }
