@@ -24,6 +24,7 @@ module.exports = {
     'max-depth': ['warn', 4],
     'no-console': 'off',
     camelcase: 'off',
+    'no-new': 'off',
     'no-extra-parens': 'warn',
     'no-unreachable': 'warn',
     'dot-notation': 'warn',
