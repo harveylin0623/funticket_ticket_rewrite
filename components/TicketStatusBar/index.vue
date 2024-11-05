@@ -95,7 +95,7 @@ const doAction = () => {
 
 const goToBrandPage = () => {
   props.gaEmitBrandEvent()
-  // router.push('')
+  router.push(`/brands/${route.params.ticketNumber}`)
 }
 
 defineOptions({
