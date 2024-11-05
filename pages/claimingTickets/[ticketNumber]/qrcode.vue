@@ -45,7 +45,7 @@ const infoList = ref([
   }
 ])
 
-const { data: pageData } = useAsyncData('qrcode', async () => {
+const { data: pageData } = await useAsyncData('qrcode', async () => {
   const ticketInfo = await ticketApi.getTicketInfo({
     data: {
       number: route.params.ticketNumber

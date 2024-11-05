@@ -61,6 +61,7 @@ const props = defineProps({
   }
 })
 
+const route = useRoute()
 const router = useRouter()
 
 const mappingIssueStatus = ref({
@@ -88,7 +89,7 @@ const doAction = () => {
       return
     }
     props.gaEmitQrocdeEvent()
-    router.push('開啟票券條碼')
+    router.push(`/claimingTickets/${route.params.ticketNumber}/qrcode`)
   }
 }
 

@@ -65,7 +65,7 @@ const inputModal = ref(null)
 const isRedeeming = ref(false)
 const basicModalContent = ref('')
 
-const { data: pageData } = useAsyncData('ticketInfo', async () => {
+const { data: pageData } = await useAsyncData('ticketInfo', async () => {
   const ticketInfo = await ticketApi.getTicketInfo({
     data: {
       number: route.params.ticketNumber
