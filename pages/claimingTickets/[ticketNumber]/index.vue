@@ -171,7 +171,12 @@ const redeemHandler = async (ticketSecret) => {
     ticketInfo,
     deleteList: [ticket_status, page_location, page_title]
   })
-  router.push('/')
+  router.push({
+    name: 'Qrcode',
+    params: {
+      ticketNumber: pageData.value.ticketInfo.data.number
+    }
+  })
   isRedeeming.value = false
 }
 

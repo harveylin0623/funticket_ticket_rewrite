@@ -16,6 +16,10 @@ import { usePageMeta } from '@/composables/usePageMeta.js'
 import ticketApi from '@/api/ticketApi.js'
 import BrandItem from '@/components/BrandItem/index.vue'
 
+definePageMeta({
+  name: 'Brands'
+})
+
 const route = useRoute()
 const { brandsMeta } = usePageMeta()
 

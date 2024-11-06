@@ -89,13 +89,23 @@ const doAction = () => {
       return
     }
     props.gaEmitQrocdeEvent()
-    router.push(`/claimingTickets/${route.params.ticketNumber}/qrcode`)
+    router.push({
+      name: 'Qrcode',
+      params: {
+        ticketNumber: route.params.ticketNumber
+      }
+    })
   }
 }
 
 const goToBrandPage = () => {
   props.gaEmitBrandEvent()
-  router.push(`/brands/${route.params.ticketNumber}`)
+  router.push({
+    name: 'Brands',
+    params: {
+      ticketNumber: route.params.ticketNumber
+    }
+  })
 }
 
 defineOptions({

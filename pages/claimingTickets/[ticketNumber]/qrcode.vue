@@ -84,5 +84,9 @@ onMounted(() => {
   }
 })
 
+definePageMeta({
+  name: 'Qrcode'
+})
+
 useHead(qrcodeMeta)
 </script>

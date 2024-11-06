@@ -31,7 +31,7 @@ export default <RouterConfig>{
           left: savedPosition?.left || 0,
           top: savedPosition?.top || 0,
         });
-      }, 550);
+      }, 600);
     });
   },
 };
