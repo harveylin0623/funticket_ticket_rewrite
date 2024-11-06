@@ -9,6 +9,7 @@
 
 @layer base {
   body {
+    width: 100% !important;
     font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
     @apply text-black;
   }
