@@ -20,11 +20,11 @@
       </div>
       <div
         v-if="isExpired"
-        class="bg-white px-6 pb-3"
+        class="bg-white px-6 py-3"
       >
         <BaseButton
           button-type="secondary-3"
-          class="w-full"
+          class="w-full cursor-not-allowed"
         >
           {{ mappingIssueStatus['4'] }}
         </BaseButton>
