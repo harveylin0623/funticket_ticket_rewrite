@@ -13,6 +13,7 @@
 
 <script setup>
 import { usePageMeta } from '@/composables/usePageMeta.js'
+import { useGaEvent } from '@/composables/useGaEvent.js'
 import ticketApi from '@/api/ticketApi.js'
 import BrandItem from '@/components/BrandItem/index.vue'
 
@@ -22,6 +23,7 @@ definePageMeta({
 
 const route = useRoute()
 const { brandsMeta } = usePageMeta()
+const { emitGaEvent } = useGaEvent()
 
 const { data: pageData } = await useAsyncData('brand', async () => {
   const ticketInfo = await ticketApi.getTicketInfo({
