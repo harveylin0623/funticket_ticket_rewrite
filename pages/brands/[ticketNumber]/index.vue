@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-dvh bg-white">
+  <div class="basic-content">
     <BarTitle>適用品牌</BarTitle>
     <div class="grid grid-cols-2 gap-2 p-3">
       <BrandItem

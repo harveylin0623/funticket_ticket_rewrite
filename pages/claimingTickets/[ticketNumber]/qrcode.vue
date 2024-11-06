@@ -1,5 +1,5 @@
 <template>
-  <div class="h-dvh bg-white">
+  <div class="basic-content">
     <BarTitle>{{ pageData.ticketInfo.data.ticket_name }}</BarTitle>
     <div class="p-5">
       <p class="mb-5 text-center text-sm">請於適用品牌門市出示條碼</p>

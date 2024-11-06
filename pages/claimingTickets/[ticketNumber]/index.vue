@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="basic-content">
     <div>
       <img
         :src="ticketImage"
@@ -7,7 +7,7 @@
         alt=""
       />
     </div>
-    <div class="bg-white px-6 pb-[70px] pt-6">
+    <div class="px-6 pb-[70px] pt-6">
       <div>
         <p class="mb-2.5">{{ ticketName }}</p>
         <p class="mb-1 text-sm text-secondary-1">發放時間：{{ releasePeriod }}</p>

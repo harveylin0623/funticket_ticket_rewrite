@@ -52,4 +52,8 @@
   .form-control {
     @apply block w-full border border-secondary-4 px-3 py-1 focus:outline-none placeholder:text-secondary-4;
   }
+
+  .basic-content {
+    @apply min-h-dvh bg-white;
+  }
 }

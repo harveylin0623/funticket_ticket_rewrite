@@ -3,7 +3,7 @@
     <CustomContainer v-if="showAllButton">
       <div
         v-if="showMainButton"
-        class="flex items-center justify-between bg-white px-6 pb-3"
+        class="flex items-center justify-between bg-white px-6 py-3"
       >
         <BaseButton
           class="w-[49.5%]"

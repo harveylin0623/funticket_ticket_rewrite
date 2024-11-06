@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-dvh bg-white">
+  <div class="basic-content">
     <BarTitle>品牌詳情</BarTitle>
     <div class="p-5">
       <div class="mb-3 md:h-[500px]">
