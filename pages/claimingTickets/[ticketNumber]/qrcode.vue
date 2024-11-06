@@ -3,7 +3,7 @@
     <BarTitle>{{ pageData.ticketInfo.data.ticket_name }}</BarTitle>
     <div class="p-5">
       <p class="mb-5 text-center text-sm">請於適用品牌門市出示條碼</p>
-      <div class="flex items-center justify-center px-5 py-[60px] shadow-[0_0_12px_0_rgba(0,0,0,0.08)]">
+      <div class="flex items-center justify-center px-5 py-[60px] shadow-primary">
         <div class="w-[160px]">
           <div class="mb-4">
             <canvas ref="qrcodeCanvas"></canvas>

@@ -28,6 +28,9 @@ export default {
         'secondary-4': '#b5b5b5',
         'modal-button': '#007aff',
         mask: 'rgba(0,0,0,0.6)'
+      },
+      boxShadow: {
+        primary: '0 0 12px 0 rgba(0, 0, 0, 0.08)'
       }
     }
   }

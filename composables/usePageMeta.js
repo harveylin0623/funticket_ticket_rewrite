@@ -22,6 +22,13 @@ export const usePageMeta = () => {
     ]
   })
 
+  const brandsMeta = ref({
+    title: '適用品牌頁面',
+    meta: [
+      { name: 'description', content: '' }
+    ]
+  })
+
   const notFoundMeta = ref({
     title: '404'
   })
@@ -30,5 +37,5 @@ export const usePageMeta = () => {
     title: '500 error'
   })
 
-  return { homeMeta, ticketMeta, qrcodeMeta, notFoundMeta, errorMeta }
+  return { homeMeta, ticketMeta, qrcodeMeta, brandsMeta, notFoundMeta, errorMeta }
 }
