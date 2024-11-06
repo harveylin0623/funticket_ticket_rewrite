@@ -36,5 +36,15 @@ const { data: pageData } = await useAsyncData('brand', async () => {
 
 const brandList = computed(() => pageData.value.ticketInfo.data.brands)
 
+onMounted(() => {
+  emitGaEvent({
+    eventName: 'page_view',
+    pageParams: {},
+    ticketInfo: pageData.value.ticketInfo.data,
+    deleteList: [],
+    pageTitle: '適用品牌頁面'
+  })
+})
+
 useHead(brandsMeta)
 </script>
